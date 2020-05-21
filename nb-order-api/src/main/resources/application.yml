@@ -1,0 +1,23 @@
+
+server:
+  port: 9060
+
+logging:
+  level:
+    root: debug
+
+spring:
+  application:
+    name: order-api
+  redis:
+    database: 3
+    host: 10.243.11.15
+    port: 6379
+    password:
+    timeout: 10s
+    lettuce:
+      pool:
+        min-idle: 0
+        max-idle: 8
+        max-active: 8
+        max-wait: -1ms
