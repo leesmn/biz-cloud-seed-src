@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.arcplus.fm.mapper.BoRepairMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.arcplus.fm.entity.BoRepair" id="boRepairMap">
+    <result property="repairId" column="repair_id"/>
+    <result property="repairCode" column="repair_code"/>
+    <result property="ownerName" column="owner_name"/>
+    <result property="contactPhone" column="contact_phone"/>
+    <result property="failureTypeId" column="failure_type_id"/>
+    <result property="incidentBuildingId" column="incident_building_id"/>
+    <result property="incidentFloorId" column="incident_floor_id"/>
+    <result property="incidentBuildingName" column="incident_building_name"/>
+    <result property="incidentFloorName" column="incident_floor_name"/>
+    <result property="repairDescribe" column="repair_describe"/>
+    <result property="branchCompanyId" column="branch_company_id"/>
+    <result property="dealStatus" column="deal_status"/>
+    <result property="dealWith" column="deal_with"/>
+    <result property="createBy" column="create_by"/>
+    <result property="createAt" column="create_at"/>
+    <result property="dataStatus" column="data_status"/>
+    <result property="scenePic" column="scene_pic"/>
+    <result property="unwoReason" column="unwo_reason"/>
+    <result property="feedbackUserInfo" column="feedback_user_info"/>
+    </resultMap>
+
+    <sql id="getTblField">
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="repairId!=null">
+                repair_id,
+            </if>
+            <if test="repairCode!=null">
+                repair_code,
+            </if>
+            <if test="ownerName!=null">
+                owner_name,
+            </if>
+            <if test="contactPhone!=null">
+                contact_phone,
+            </if>
+            <if test="failureTypeId!=null">
+                failure_type_id,
+            </if>
+            <if test="incidentBuildingId!=null">
+                incident_building_id,
+            </if>
+            <if test="incidentFloorId!=null">
+                incident_floor_id,
+            </if>
+            <if test="incidentBuildingName!=null">
+                incident_building_name,
+            </if>
+            <if test="incidentFloorName!=null">
+                incident_floor_name,
+            </if>
+            <if test="repairDescribe!=null">
+                repair_describe,
+            </if>
+            <if test="branchCompanyId!=null">
+                branch_company_id,
+            </if>
+            <if test="dealStatus!=null">
+                deal_status,
+            </if>
+            <if test="dealWith!=null">
+                deal_with,
+            </if>
+            <if test="createBy!=null">
+                create_by,
+            </if>
+            <if test="createAt!=null">
+                create_at,
+            </if>
+            <if test="dataStatus!=null">
+                data_status,
+            </if>
+            <if test="scenePic!=null">
+                scene_pic,
+            </if>
+            <if test="unwoReason!=null">
+                unwo_reason,
+            </if>
+            <if test="feedbackUserInfo!=null">
+                feedback_user_info,
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="getAttrValue">
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="repairId!=null">
+                #{repairId},
+            </if>
+            <if test="repairCode!=null">
+                #{repairCode},
+            </if>
+            <if test="ownerName!=null">
+                #{ownerName},
+            </if>
+            <if test="contactPhone!=null">
+                #{contactPhone},
+            </if>
+            <if test="failureTypeId!=null">
+                #{failureTypeId},
+            </if>
+            <if test="incidentBuildingId!=null">
+                #{incidentBuildingId},
+            </if>
+            <if test="incidentFloorId!=null">
+                #{incidentFloorId},
+            </if>
+            <if test="incidentBuildingName!=null">
+                #{incidentBuildingName},
+            </if>
+            <if test="incidentFloorName!=null">
+                #{incidentFloorName},
+            </if>
+            <if test="repairDescribe!=null">
+                #{repairDescribe},
+            </if>
+            <if test="branchCompanyId!=null">
+                #{branchCompanyId},
+            </if>
+            <if test="dealStatus!=null">
+                #{dealStatus},
+            </if>
+            <if test="dealWith!=null">
+                #{dealWith},
+            </if>
+            <if test="createBy!=null">
+                #{createBy},
+            </if>
+            <if test="createAt!=null">
+                #{createAt},
+            </if>
+            <if test="dataStatus!=null">
+                #{dataStatus},
+            </if>
+            <if test="scenePic!=null">
+                #{scenePic},
+            </if>
+            <if test="unwoReason!=null">
+                #{unwoReason},
+            </if>
+            <if test="feedbackUserInfo!=null">
+                #{feedbackUserInfo},
+            </if>
+        </trim>
+    </sql>
+
+
+    <sql id="setAttrValue">
+        <set>
+            <trim  suffixOverrides=",">
+                <if test="repairId!=null">
+                    repair_id = #{repairId},
+                </if>
+                <if test="repairCode!=null">
+                    repair_code = #{repairCode},
+                </if>
+                <if test="ownerName!=null">
+                    owner_name = #{ownerName},
+                </if>
+                <if test="contactPhone!=null">
+                    contact_phone = #{contactPhone},
+                </if>
+                <if test="failureTypeId!=null">
+                    failure_type_id = #{failureTypeId},
+                </if>
+                <if test="incidentBuildingId!=null">
+                    incident_building_id = #{incidentBuildingId},
+                </if>
+                <if test="incidentFloorId!=null">
+                    incident_floor_id = #{incidentFloorId},
+                </if>
+                <if test="incidentBuildingName!=null">
+                    incident_building_name = #{incidentBuildingName},
+                </if>
+                <if test="incidentFloorName!=null">
+                    incident_floor_name = #{incidentFloorName},
+                </if>
+                <if test="repairDescribe!=null">
+                    repair_describe = #{repairDescribe},
+                </if>
+                <if test="branchCompanyId!=null">
+                    branch_company_id = #{branchCompanyId},
+                </if>
+                <if test="dealStatus!=null">
+                    deal_status = #{dealStatus},
+                </if>
+                <if test="dealWith!=null">
+                    deal_with = #{dealWith},
+                </if>
+                <if test="createBy!=null">
+                    create_by = #{createBy},
+                </if>
+                <if test="createAt!=null">
+                    create_at = #{createAt},
+                </if>
+                <if test="dataStatus!=null">
+                    data_status = #{dataStatus},
+                </if>
+                <if test="scenePic!=null">
+                    scene_pic = #{scenePic},
+                </if>
+                <if test="unwoReason!=null">
+                    unwo_reason = #{unwoReason},
+                </if>
+                <if test="feedbackUserInfo!=null">
+                    feedback_user_info = #{feedbackUserInfo},
+                </if>
+                </trim>
+        </set>
+    </sql>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="repairId" >
+        insert into bo_repair
+          <include refid="getTblField" />
+        values
+          <include refid="getAttrValue" />
+
+    </insert>
+
+    <update id="update">
+        update bo_repair
+        <include refid="setAttrValue" />
+        where repair_id = #{repairId}
+    </update>
+
+    <update id="updateByCode">
+        update bo_repair
+        <include refid="setAttrValue" />
+        where repair_code = #{repairCode}
+    </update>
+
+    <update id="delete">
+        update bo_repair
+        set data_status = "D"
+        where repair_id = #{id}
+    </update>
+
+    <select id="selectAll" resultMap="boRepairMap">
+        select * from bo_repair
+    </select>
+
+    <select id="getRepairByCode" resultType="com.arcplus.fm.entity.vo.RepairVo">
+        select repair.*,fail.failure_name failure_type_name,org.org_name branch_company_name from bo_repair repair
+        LEFT JOIN tp_failure fail ON repair.failure_type_id=fail.failure_id
+        LEFT JOIN co_organization org ON repair.branch_company_id=org.org_id
+        where repair_code = #{repairCode}
+    </select>
+
+    <select id="selectRepairWizWo" resultType="com.arcplus.fm.entity.vo.RepairWoVo">
+        select r.*,w.wo_code from bo_repair r
+        left join bo_workorder w on w.repair_code = r.repair_code and w.data_status = 'N'
+        where r.data_status = 'N' and r.incident_building_id = #{buildId} and r.incident_floor_id = #{floorId}
+    </select>
+
+
+    <select id="countByFloor" resultType="com.arcplus.fm.entity.vo.FloorCountVo">
+        select incident_floor_id floorId,COUNT(1) total from bo_repair
+        where data_status = 'N' and deal_status = 'W' and incident_building_id = #{buildId}
+        GROUP BY incident_floor_id
+    </select>
+
+</mapper>

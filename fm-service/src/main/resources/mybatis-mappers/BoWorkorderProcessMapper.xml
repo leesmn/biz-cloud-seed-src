@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.arcplus.fm.mapper.BoWorkorderProcessMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.arcplus.fm.entity.BoWorkorderProcess" id="boWorkorderProcessMap">
+        <result property="processId" column="process_id"/>
+        <result property="woCode" column="wo_code"/>
+        <result property="dealDescribe" column="deal_describe"/>
+        <result property="processRemark" column="process_remark"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createName" column="create_name"/>
+        <result property="createAt" column="create_at"/>
+        <result property="dataStatus" column="data_status"/>
+    </resultMap>
+
+    <sql id="getTblField">
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="processId!=null">
+                process_id,
+            </if>
+            <if test="woCode!=null">
+                wo_code,
+            </if>
+            <if test="dealDescribe!=null">
+                deal_describe,
+            </if>
+            <if test="processRemark!=null">
+                process_remark,
+            </if>
+            <if test="createBy!=null">
+                create_by,
+            </if>
+            <if test="createName!=null">
+                create_name,
+            </if>
+            <if test="createAt!=null">
+                create_at,
+            </if>
+            <if test="dataStatus!=null">
+                data_status,
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="getAttrValue">
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="processId!=null">
+                #{processId},
+            </if>
+            <if test="woCode!=null">
+                #{woCode},
+            </if>
+            <if test="dealDescribe!=null">
+                #{dealDescribe},
+            </if>
+            <if test="processRemark!=null">
+                #{processRemark},
+            </if>
+            <if test="createBy!=null">
+                #{createBy},
+            </if>
+            <if test="createName!=null">
+                #{createName},
+            </if>
+            <if test="createAt!=null">
+                #{createAt},
+            </if>
+            <if test="dataStatus!=null">
+                #{dataStatus},
+            </if>
+        </trim>
+    </sql>
+
+
+    <sql id="setAttrValue">
+        <set>
+            <trim  suffixOverrides=",">
+                <if test="processId!=null">
+                    process_id = #{processId},
+                </if>
+                <if test="woCode!=null">
+                    wo_code = #{woCode},
+                </if>
+                <if test="dealDescribe!=null">
+                    deal_describe = #{dealDescribe},
+                </if>
+                <if test="processRemark!=null">
+                    process_remark = #{processRemark},
+                </if>
+                <if test="createBy!=null">
+                    create_by = #{createBy},
+                </if>
+                <if test="createName!=null">
+                    create_name = #{createName},
+                </if>
+                <if test="createAt!=null">
+                    create_at = #{createAt},
+                </if>
+                <if test="dataStatus!=null">
+                    data_status = #{dataStatus},
+                </if>
+            </trim>
+        </set>
+    </sql>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="processId" >
+        insert into bo_workorder_process
+          <include refid="getTblField" />
+        values
+          <include refid="getAttrValue" />
+
+    </insert>
+
+    <update id="update">
+        update bo_workorder_process
+        <include refid="setAttrValue" />
+        where process_id = #{processId}
+    </update>
+
+    <update id="delete">
+        update bo_workorder_process
+        set data_status = "D"
+        where process_id = #{id}
+    </update>
+
+    <select id="selectAll" resultMap="boWorkorderProcessMap">
+        select * from bo_workorder_process
+        where data_status = "D"
+        order by process_id desc
+    </select>
+
+    <select id="selectByWoCode" resultMap="boWorkorderProcessMap">
+        select * from bo_workorder_process
+        where data_status = "N" and wo_code = #{woCode}
+        order by process_id asc
+    </select>
+
+
+</mapper>

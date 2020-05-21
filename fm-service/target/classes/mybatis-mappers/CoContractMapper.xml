@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.arcplus.fm.mapper.CoContractMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.arcplus.fm.entity.CoContract" id="coContractMap">
+        <result property="contractId" column="contract_id"/>
+        <result property="contractNo" column="contract_no"/>
+        <result property="contractName" column="contract_name"/>
+        <result property="contractCode" column="contract_code"/>
+        <result property="contractTarget" column="contract_target"/>
+        <result property="invoiceTitle" column="invoice_title"/>
+        <result property="fromDate" column="from_date"/>
+        <result property="toDate" column="to_date"/>
+        <result property="contractArea" column="contract_area"/>
+        <result property="contractCost" column="contract_cost"/>
+        <result property="settlementMethod" column="settlement_method"/>
+        <result property="remark" column="remark"/>
+        <result property="attachment" column="attachment"/>
+        <result property="contractStatus" column="contract_status"/>
+        <result property="parentContract" column="parent_contract"/>
+        <result property="createAt" column="create_at"/>
+        <result property="createBy" column="create_by"/>
+        <result property="creatorName" column="creator_name"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateAt" column="update_at"/>
+        <result property="dataStatus" column="data_status"/>
+    </resultMap>
+
+    <sql id="getTblField">
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="contractId!=null">
+                contract_id,
+            </if>
+            <if test="contractNo!=null">
+                contract_no,
+            </if>
+            <if test="contractName!=null">
+                contract_name,
+            </if>
+            <if test="contractCode!=null">
+                contract_code,
+            </if>
+            <if test="contractTarget!=null">
+                contract_target,
+            </if>
+            <if test="invoiceTitle!=null">
+                invoice_title,
+            </if>
+            <if test="fromDate!=null">
+                from_date,
+            </if>
+            <if test="toDate!=null">
+                to_date,
+            </if>
+            <if test="contractArea!=null">
+                contract_area,
+            </if>
+            <if test="contractCost!=null">
+                contract_cost,
+            </if>
+            <if test="settlementMethod!=null">
+                settlement_method,
+            </if>
+            <if test="remark!=null">
+                remark,
+            </if>
+            <if test="attachment!=null">
+                attachment,
+            </if>
+            <if test="contractStatus!=null">
+                contract_status,
+            </if>
+            <if test="parentContract!=null">
+                parent_contract,
+            </if>
+            <if test="createAt!=null">
+                create_at,
+            </if>
+            <if test="createBy!=null">
+                create_by,
+            </if>
+            <if test="creatorName!=null">
+                creator_name,
+            </if>
+            <if test="updateBy!=null">
+                update_by,
+            </if>
+            <if test="updateAt!=null">
+                update_at,
+            </if>
+            <if test="dataStatus!=null">
+                data_status,
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="getAttrValue">
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="contractId!=null">
+                #{contractId},
+            </if>
+            <if test="contractNo!=null">
+                #{contractNo},
+            </if>
+            <if test="contractName!=null">
+                #{contractName},
+            </if>
+            <if test="contractCode!=null">
+                #{contractCode},
+            </if>
+            <if test="contractTarget!=null">
+                #{contractTarget},
+            </if>
+            <if test="invoiceTitle!=null">
+                #{invoiceTitle},
+            </if>
+            <if test="fromDate!=null">
+                #{fromDate},
+            </if>
+            <if test="toDate!=null">
+                #{toDate},
+            </if>
+            <if test="contractArea!=null">
+                #{contractArea},
+            </if>
+            <if test="contractCost!=null">
+                #{contractCost},
+            </if>
+            <if test="settlementMethod!=null">
+                #{settlementMethod},
+            </if>
+            <if test="remark!=null">
+                #{remark},
+            </if>
+            <if test="attachment!=null">
+                #{attachment},
+            </if>
+            <if test="contractStatus!=null">
+                #{contractStatus},
+            </if>
+            <if test="parentContract!=null">
+                #{parentContract},
+            </if>
+            <if test="createAt!=null">
+                #{createAt},
+            </if>
+            <if test="createBy!=null">
+                #{createBy},
+            </if>
+            <if test="creatorName!=null">
+                #{creatorName},
+            </if>
+            <if test="updateBy!=null">
+                #{updateBy},
+            </if>
+            <if test="updateAt!=null">
+                #{updateAt},
+            </if>
+            <if test="dataStatus!=null">
+                #{dataStatus},
+            </if>
+        </trim>
+    </sql>
+
+
+    <sql id="setAttrValue">
+        <set>
+            <trim  suffixOverrides=",">
+                <if test="contractId!=null">
+                    contract_id = #{contractId},
+                </if>
+                <if test="contractNo!=null">
+                    contract_no = #{contractNo},
+                </if>
+                <if test="contractName!=null">
+                    contract_name = #{contractName},
+                </if>
+                <if test="contractCode!=null">
+                    contract_code = #{contractCode},
+                </if>
+                <if test="contractTarget!=null">
+                    contract_target = #{contractTarget},
+                </if>
+                <if test="invoiceTitle!=null">
+                    invoice_title = #{invoiceTitle},
+                </if>
+                <if test="fromDate!=null">
+                    from_date = #{fromDate},
+                </if>
+                <if test="toDate!=null">
+                    to_date = #{toDate},
+                </if>
+                <if test="contractArea!=null">
+                    contract_area = #{contractArea},
+                </if>
+                <if test="contractCost!=null">
+                    contract_cost = #{contractCost},
+                </if>
+                <if test="settlementMethod!=null">
+                    settlement_method = #{settlementMethod},
+                </if>
+                <if test="remark!=null">
+                    remark = #{remark},
+                </if>
+                <if test="attachment!=null">
+                    attachment = #{attachment},
+                </if>
+                <if test="contractStatus!=null">
+                    contract_status = #{contractStatus},
+                </if>
+                <if test="parentContract!=null">
+                    parent_contract = #{parentContract},
+                </if>
+                <if test="createAt!=null">
+                    create_at = #{createAt},
+                </if>
+                <if test="createBy!=null">
+                    create_by = #{createBy},
+                </if>
+                <if test="creatorName!=null">
+                    creator_name = #{creatorName},
+                </if>
+                <if test="updateBy!=null">
+                    update_by = #{updateBy},
+                </if>
+                <if test="updateAt!=null">
+                    update_at = #{updateAt},
+                </if>
+                <if test="dataStatus!=null">
+                    data_status = #{dataStatus},
+                </if>
+            </trim>
+        </set>
+    </sql>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="contractId" >
+        insert into co_contract
+        <include refid="getTblField" />
+        values
+        <include refid="getAttrValue" />
+
+    </insert>
+
+    <update id="update">
+        update co_contract
+        <include refid="setAttrValue" />
+        where contract_id = #{contractId}
+    </update>
+
+    <update id="delete">
+        update co_contract
+        set data_status = "D"
+        where contract_id = #{id}
+    </update>
+
+    <select id="selectAll" resultMap="coContractMap">
+        select * from co_contract
+    </select>
+
+
+</mapper>

@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.arcplus.fm.mapper.BoScheduledMaintainMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.arcplus.fm.entity.BoScheduledMaintain" id="boScheduledMaintainMap">
+        <result property="scheduledId" column="scheduled_id"/>
+        <result property="groupUuid" column="group_uuid"/>
+        <result property="facilityCode" column="facility_code"/>
+        <result property="facilityName" column="facility_name"/>
+        <result property="maintainContent" column="maintain_content"/>
+        <result property="maintainDescribe" column="maintain_describe"/>
+        <result property="maintainStartAt" column="maintain_start_at"/>
+        <result property="assignment" column="assignment"/>
+        <result property="assignmentGroup" column="assignment_group"/>
+        <result property="contactPhone" column="contact_phone"/>
+        <result property="priorityLevel" column="priority_level"/>
+        <result property="scheduledRule" column="scheduled_rule"/>
+        <result property="scheduledInterval" column="scheduled_interval"/>
+        <result property="scheduledEndAt" column="scheduled_end_at"/>
+        <result property="dealStatus" column="deal_status"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createAt" column="create_at"/>
+        <result property="dataStatus" column="data_status"/>
+    </resultMap>
+
+    <sql id="getTblField">
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="scheduledId!=null">
+                scheduled_id,
+            </if>
+            <if test="groupUuid!=null">
+                group_uuid,
+            </if>
+            <if test="facilityCode!=null">
+                facility_code,
+            </if>
+            <if test="facilityName!=null">
+                facility_name,
+            </if>
+            <if test="maintainContent!=null">
+                maintain_content,
+            </if>
+            <if test="maintainDescribe!=null">
+                maintain_describe,
+            </if>
+            <if test="maintainStartAt!=null">
+                maintain_start_at,
+            </if>
+            <if test="assignment!=null">
+                assignment,
+            </if>
+            <if test="assignmentGroup!=null">
+                assignment_group,
+            </if>
+            <if test="contactPhone!=null">
+                contact_phone,
+            </if>
+            <if test="priorityLevel!=null">
+                priority_level,
+            </if>
+            <if test="scheduledRule!=null">
+                scheduled_rule,
+            </if>
+            <if test="scheduledInterval!=null">
+                scheduled_interval,
+            </if>
+            <if test="scheduledEndAt!=null">
+                scheduled_end_at,
+            </if>
+            <if test="dealStatus!=null">
+                deal_status,
+            </if>
+            <if test="createBy!=null">
+                create_by,
+            </if>
+            <if test="createAt!=null">
+                create_at,
+            </if>
+            <if test="dataStatus!=null">
+                data_status,
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="getAttrValue">
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="scheduledId!=null">
+                #{scheduledId},
+            </if>
+            <if test="groupUuid!=null">
+                #{groupUuid},
+            </if>
+            <if test="facilityCode!=null">
+                #{facilityCode},
+            </if>
+            <if test="facilityName!=null">
+                #{facilityName},
+            </if>
+            <if test="maintainContent!=null">
+                #{maintainContent},
+            </if>
+            <if test="maintainDescribe!=null">
+                #{maintainDescribe},
+            </if>
+            <if test="maintainStartAt!=null">
+                #{maintainStartAt},
+            </if>
+            <if test="assignment!=null">
+                #{assignment},
+            </if>
+            <if test="assignmentGroup!=null">
+                #{assignmentGroup},
+            </if>
+            <if test="contactPhone!=null">
+                #{contactPhone},
+            </if>
+            <if test="priorityLevel!=null">
+                #{priorityLevel},
+            </if>
+            <if test="scheduledRule!=null">
+                #{scheduledRule},
+            </if>
+            <if test="scheduledInterval!=null">
+                #{scheduledInterval},
+            </if>
+            <if test="scheduledEndAt!=null">
+                #{scheduledEndAt},
+            </if>
+            <if test="dealStatus!=null">
+                #{dealStatus},
+            </if>
+            <if test="createBy!=null">
+                #{createBy},
+            </if>
+            <if test="createAt!=null">
+                #{createAt},
+            </if>
+            <if test="dataStatus!=null">
+                #{dataStatus},
+            </if>
+        </trim>
+    </sql>
+
+
+    <sql id="setAttrValue">
+        <set>
+            <trim  suffixOverrides=",">
+                <if test="scheduledId!=null">
+                    scheduled_id = #{scheduledId},
+                </if>
+                <if test="groupUuid!=null">
+                    group_uuid = #{groupUuid},
+                </if>
+                <if test="facilityCode!=null">
+                    facility_code = #{facilityCode},
+                </if>
+                <if test="facilityName!=null">
+                    facility_name = #{facilityName},
+                </if>
+                <if test="maintainContent!=null">
+                    maintain_content = #{maintainContent},
+                </if>
+                <if test="maintainDescribe!=null">
+                    maintain_describe = #{maintainDescribe},
+                </if>
+                <if test="maintainStartAt!=null">
+                    maintain_start_at = #{maintainStartAt},
+                </if>
+                <if test="assignment!=null">
+                    assignment = #{assignment},
+                </if>
+                <if test="assignmentGroup!=null">
+                    assignment_group = #{assignmentGroup},
+                </if>
+                <if test="contactPhone!=null">
+                    contact_phone = #{contactPhone},
+                </if>
+                <if test="priorityLevel!=null">
+                    priority_level = #{priorityLevel},
+                </if>
+                <if test="scheduledRule!=null">
+                    scheduled_rule = #{scheduledRule},
+                </if>
+                <if test="scheduledInterval!=null">
+                    scheduled_interval = #{scheduledInterval},
+                </if>
+                <if test="scheduledEndAt!=null">
+                    scheduled_end_at = #{scheduledEndAt},
+                </if>
+                <if test="dealStatus!=null">
+                    deal_status = #{dealStatus},
+                </if>
+                <if test="createBy!=null">
+                    create_by = #{createBy},
+                </if>
+                <if test="createAt!=null">
+                    create_at = #{createAt},
+                </if>
+                <if test="dataStatus!=null">
+                    data_status = #{dataStatus},
+                </if>
+            </trim>
+        </set>
+    </sql>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="scheduledId" >
+        insert into bo_scheduled_maintain
+          <include refid="getTblField" />
+        values
+          <include refid="getAttrValue" />
+
+    </insert>
+
+    <update id="update">
+        update bo_scheduled_maintain
+        <include refid="setAttrValue" />
+        where scheduled_id = #{scheduledId}
+    </update>
+
+    <update id="delete">
+        update bo_scheduled_maintain
+        set data_status = "D"
+        where scheduled_id = #{id}
+    </update>
+
+    <select id="getByGroupUuid" resultMap="boScheduledMaintainMap">
+        select * from bo_scheduled_maintain
+        where group_uuid = #{groupUuid} and data_status = "N"
+        order by scheduled_id asc limit 1
+    </select>
+
+    <update id="updateByGroupUuid">
+        update bo_scheduled_maintain
+        <include refid="setAttrValue" />
+        where group_uuid = #{groupUuid}
+    </update>
+
+    <update id="deleteByGroupUuid">
+        update bo_scheduled_maintain
+        set data_status = "D"
+        where group_uuid = #{groupUuid}
+    </update>
+
+
+    <select id="selectAll" resultMap="boScheduledMaintainMap">
+        select * from bo_scheduled_maintain
+        where data_status = "N"
+        order by scheduled_id desc
+    </select>
+
+    <select id="selectScheduledMaintainComplex" resultMap="boScheduledMaintainMap" parameterType="java.util.HashMap">
+        select sm.* from bo_scheduled_maintain sm
+        <trim  suffixOverrides="and">
+            where sm.data_status = 'N' AND assignment = #{uid}
+            <choose>
+                <!--待处理-->
+                <when test="dealState == 0">
+                    AND deal_status = 'W'
+                </when>
+                <when test="dealState == 1">
+                    AND deal_status = 'F'
+                </when>
+                <!--已处理-->
+                <otherwise>
+                    AND 1=1
+                </otherwise>
+            </choose>
+        </trim>
+    </select>
+
+
+    <select id="selectMonth" resultMap="boScheduledMaintainMap">
+        select * from bo_scheduled_maintain
+        where data_status = "N" and maintain_start_at &gt;= #{monthFirstDay} and  maintain_start_at &lt;=  LAST_DAY(#{monthFirstDay})
+        order by maintain_start_at asc
+    </select>
+
+
+    <select id="selectByAssignment" resultMap="boScheduledMaintainMap">
+        select sm.* from bo_scheduled_maintain sm
+            where sm.data_status = 'N' AND sm.assignment = #{uid}
+    </select>
+
+
+
+</mapper>

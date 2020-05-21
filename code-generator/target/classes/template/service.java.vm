@@ -1,0 +1,21 @@
+package ${package}.service;
+
+import ${package}.entity.${className};
+import com.github.pagehelper.PageInfo;
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+public interface ${className}Service  {
+    ${className} save(${className} entity);
+
+    int update(${className} entity);
+
+    int delete(int id);
+
+    PageInfo<${className}> selectAllPage(int page,int size);
+}

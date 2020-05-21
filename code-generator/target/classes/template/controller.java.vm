@@ -1,0 +1,39 @@
+package ${package}.controller;
+
+import ${package}.entity.${className};
+import ${package}.common.Result;
+import ${package}.common.ResultGenerator;
+import ${package}.service.${className}Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import com.github.pagehelper.PageInfo;
+
+@RestController
+@RequestMapping("${secondModuleName}")
+public class ${className}Controller  {
+    @Autowired
+    ${className}Service inst${className}Service;
+
+    @PostMapping(value = "/add")
+    public Result add${className}(@RequestBody ${className} entity) throws Exception {
+        return ResultGenerator.genSuccessResult(inst${className}Service.save(entity));
+    }
+
+    @PostMapping(value = "/update")
+    public Result update${className}(@RequestBody ${className} entity) throws Exception {
+        inst${className}Service.update(entity);
+        return ResultGenerator.genSuccessResult();
+    }
+
+    @PostMapping(value = "/del/{id}")
+    public Result del${className}Service(@PathVariable("id") int id) throws Exception {
+        inst${className}Service.delete(id);
+        return ResultGenerator.genSuccessResult();
+    }
+
+    @GetMapping(value = "")
+    public Result selectAllPage(@RequestParam(value="page") int page,@RequestParam(value="limit") int limit) throws Exception {
+        PageInfo<${className}> reslut = inst${className}Service.selectAllPage(page,limit);
+        return ResultGenerator.genSuccessPageResult(reslut);
+    }
+}

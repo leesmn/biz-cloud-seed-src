@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.arcplus.fm.mapper.CoVehicleMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.arcplus.fm.entity.CoVehicle" id="coVehicleMap">
+    <result property="vehicleId" column="vehicle_id"/>
+    <result property="carNum" column="car_num"/>
+    <result property="userName" column="user_name"/>
+    <result property="contactPhone" column="contact_phone"/>
+    <result property="branchCompanyId" column="branch_company_id"/>
+    <result property="floorId" column="floor_id"/>
+    <result property="floorName" column="floor_name"/>
+    <result property="buildingId" column="building_id"/>
+    <result property="buildingName" column="building_name"/>
+    <result property="dealStatus" column="deal_status"/>
+    <result property="space" column="space"/>
+        <result property="spaceName" column="space_name"/>
+    <result property="deleteUid" column="delete_uid"/>
+    <result property="deleteTime" column="delete_time"/>
+    <result property="lastModifierTime" column="last_modifier_time"/>
+    <result property="lastModifierUid" column="last_modifier_uid"/>
+    <result property="createAt" column="create_at"/>
+    <result property="createBy" column="create_by"/>
+    <result property="dataStatus" column="data_status"/>
+    </resultMap>
+
+    <sql id="getTblField">
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="vehicleId!=null">
+                vehicle_id,
+            </if>
+            <if test="carNum!=null">
+                car_num,
+            </if>
+            <if test="userName!=null">
+                user_name,
+            </if>
+            <if test="contactPhone!=null">
+                contact_phone,
+            </if>
+            <if test="branchCompanyId!=null">
+                branch_company_id,
+            </if>
+            <if test="floorId!=null">
+                floor_id,
+            </if>
+            <if test="floorName!=null">
+                floor_name,
+            </if>
+            <if test="buildingId!=null">
+                building_id,
+            </if>
+            <if test="buildingName!=null">
+                building_name,
+            </if>
+            <if test="dealStatus!=null">
+                deal_status,
+            </if>
+            <if test="space!=null">
+                space,
+            </if>
+            <if test="spaceName!=null">
+                space_name,
+            </if>
+            <if test="deleteUid!=null">
+                delete_uid,
+            </if>
+            <if test="deleteTime!=null">
+                delete_time,
+            </if>
+            <if test="lastModifierTime!=null">
+                last_modifier_time,
+            </if>
+            <if test="lastModifierUid!=null">
+                last_modifier_uid,
+            </if>
+            <if test="createAt!=null">
+                create_at,
+            </if>
+            <if test="createBy!=null">
+                create_by,
+            </if>
+            <if test="dataStatus!=null">
+                data_status,
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="getAttrValue">
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="vehicleId!=null">
+                #{vehicleId},
+            </if>
+            <if test="carNum!=null">
+                #{carNum},
+            </if>
+            <if test="userName!=null">
+                #{userName},
+            </if>
+            <if test="contactPhone!=null">
+                #{contactPhone},
+            </if>
+            <if test="branchCompanyId!=null">
+                #{branchCompanyId},
+            </if>
+            <if test="floorId!=null">
+                #{floorId},
+            </if>
+            <if test="floorName!=null">
+                #{floorName},
+            </if>
+            <if test="buildingId!=null">
+                #{buildingId},
+            </if>
+            <if test="buildingName!=null">
+                #{buildingName},
+            </if>
+            <if test="dealStatus!=null">
+                #{dealStatus},
+            </if>
+            <if test="space!=null">
+                #{space},
+            </if>
+            <if test="spaceName!=null">
+                #{spaceName},
+            </if>
+            <if test="deleteUid!=null">
+                #{deleteUid},
+            </if>
+            <if test="deleteTime!=null">
+                #{deleteTime},
+            </if>
+            <if test="lastModifierTime!=null">
+                #{lastModifierTime},
+            </if>
+            <if test="lastModifierUid!=null">
+                #{lastModifierUid},
+            </if>
+            <if test="createAt!=null">
+                #{createAt},
+            </if>
+            <if test="createBy!=null">
+                #{createBy},
+            </if>
+            <if test="dataStatus!=null">
+                #{dataStatus},
+            </if>
+        </trim>
+    </sql>
+
+
+    <sql id="setAttrValue">
+        <set>
+            <trim  suffixOverrides=",">
+                <if test="vehicleId!=null">
+                    vehicle_id = #{vehicleId},
+                </if>
+                <if test="carNum!=null">
+                    car_num = #{carNum},
+                </if>
+                <if test="userName!=null">
+                    user_name = #{userName},
+                </if>
+                <if test="contactPhone!=null">
+                    contact_phone = #{contactPhone},
+                </if>
+                <if test="branchCompanyId!=null">
+                    branch_company_id = #{branchCompanyId},
+                </if>
+                <if test="floorId!=null">
+                    floor_id = #{floorId},
+                </if>
+                <if test="floorName!=null">
+                    floor_name = #{floorName},
+                </if>
+                <if test="buildingId!=null">
+                    building_id = #{buildingId},
+                </if>
+                <if test="buildingName!=null">
+                    building_name = #{buildingName},
+                </if>
+                <if test="dealStatus!=null">
+                    deal_status = #{dealStatus},
+                </if>
+                <if test="space!=null">
+                    space = #{space},
+                </if>
+                <if test="spaceName!=null">
+                    space_name = #{spaceName},
+                </if>
+                <if test="deleteUid!=null">
+                    delete_uid = #{deleteUid},
+                </if>
+                <if test="deleteTime!=null">
+                    delete_time = #{deleteTime},
+                </if>
+                <if test="lastModifierTime!=null">
+                    last_modifier_time = #{lastModifierTime},
+                </if>
+                <if test="lastModifierUid!=null">
+                    last_modifier_uid = #{lastModifierUid},
+                </if>
+                <if test="createAt!=null">
+                    create_at = #{createAt},
+                </if>
+                <if test="createBy!=null">
+                    create_by = #{createBy},
+                </if>
+                <if test="dataStatus!=null">
+                    data_status = #{dataStatus},
+                </if>
+                </trim>
+        </set>
+    </sql>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="vehicleId" >
+        insert into co_vehicle
+          <include refid="getTblField" />
+        values
+          <include refid="getAttrValue" />
+
+    </insert>
+
+    <update id="update">
+        update co_vehicle
+        <include refid="setAttrValue" />
+        where vehicle_id = #{vehicleId}
+    </update>
+
+    <update id="delete">
+        update co_vehicle
+        set data_status = "D",
+        delete_time = now(),
+        delete_uid = #{delete_uid}
+        where vehicle_id = #{id}
+    </update>
+
+    <select id="selectAll" resultMap="coVehicleMap">
+        select * from co_vehicle
+        where data_status = "N"
+    </select>
+
+    <select id="checkIsExist" resultMap="coVehicleMap">
+        select * from co_vehicle
+        where data_status = "N"
+         and car_num = #{car_num}
+    </select>
+
+</mapper>

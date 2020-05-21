@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.arcplus.fm.mapper.CoPriorityLevelMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.arcplus.fm.entity.CoPriorityLevel" id="coPriorityLevelMap">
+    <result property="priorityId" column="priority_id"/>
+    <result property="levelValue" column="level_value"/>
+    <result property="levelName" column="level_name"/>
+    <result property="responeTime" column="respone_time"/>
+    <result property="remark" column="remark"/>
+    <result property="createAt" column="create_at"/>
+    <result property="createBy" column="create_by"/>
+    <result property="dataStatus" column="data_status"/>
+    </resultMap>
+
+    <sql id="getTblField">
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="priorityId!=null">
+                priority_id,
+            </if>
+            <if test="levelValue!=null">
+                level_value,
+            </if>
+            <if test="levelName!=null">
+                level_name,
+            </if>
+            <if test="responeTime!=null">
+                respone_time,
+            </if>
+            <if test="remark!=null">
+                remark,
+            </if>
+            <if test="createAt!=null">
+                create_at,
+            </if>
+            <if test="createBy!=null">
+                create_by,
+            </if>
+            <if test="dataStatus!=null">
+                data_status,
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="getAttrValue">
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="priorityId!=null">
+                #{priorityId},
+            </if>
+            <if test="levelValue!=null">
+                #{levelValue},
+            </if>
+            <if test="levelName!=null">
+                #{levelName},
+            </if>
+            <if test="responeTime!=null">
+                #{responeTime},
+            </if>
+            <if test="remark!=null">
+                #{remark},
+            </if>
+            <if test="createAt!=null">
+                #{createAt},
+            </if>
+            <if test="createBy!=null">
+                #{createBy},
+            </if>
+            <if test="dataStatus!=null">
+                #{dataStatus},
+            </if>
+        </trim>
+    </sql>
+
+
+    <sql id="setAttrValue">
+        <set>
+            <trim  suffixOverrides=",">
+                <if test="priorityId!=null">
+                    priority_id = #{priorityId},
+                </if>
+                <if test="levelValue!=null">
+                    level_value = #{levelValue},
+                </if>
+                <if test="levelName!=null">
+                    level_name = #{levelName},
+                </if>
+                <if test="responeTime!=null">
+                    respone_time = #{responeTime},
+                </if>
+                <if test="remark!=null">
+                    remark = #{remark},
+                </if>
+                <if test="createAt!=null">
+                    create_at = #{createAt},
+                </if>
+                <if test="createBy!=null">
+                    create_by = #{createBy},
+                </if>
+                <if test="dataStatus!=null">
+                    data_status = #{dataStatus},
+                </if>
+                </trim>
+        </set>
+    </sql>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="priorityId" >
+        insert into co_priority_level
+          <include refid="getTblField" />
+        values
+          <include refid="getAttrValue" />
+
+    </insert>
+
+    <update id="update">
+        update co_priority_level
+        <include refid="setAttrValue" />
+        where priority_id = #{priorityId}
+    </update>
+
+    <update id="delete">
+        update co_priority_level
+        set data_status = "D"
+        where priority_id = #{id}
+    </update>
+
+    <select id="selectAll" resultMap="coPriorityLevelMap">
+        select * from co_priority_level
+        where data_status = "N"
+        order by priority_id desc
+    </select>
+
+
+</mapper>

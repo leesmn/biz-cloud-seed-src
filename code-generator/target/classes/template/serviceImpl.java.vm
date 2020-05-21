@@ -1,0 +1,47 @@
+package ${package}.service.impl;
+
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import ${package}.service.${className}Service;
+import ${package}.entity.${className};
+import ${package}.mapper.${className}Mapper;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@Service
+public class ${className}ServiceImpl implements ${className}Service  {
+    @Autowired
+    ${className}Mapper inst${className}Mapper;
+
+    @Override
+    public ${className} save(${className} entity) {
+        inst${className}Mapper.save(entity);
+        return entity;
+    }
+
+    @Override
+    public int update(${className} entity) {
+        return inst${className}Mapper.update(entity);
+    }
+
+    @Override
+    public int delete(int id) {
+        return inst${className}Mapper.delete(id);
+    }
+
+    @Override
+    public PageInfo<${className}> selectAllPage(int page,int size) {
+        PageHelper.startPage(page,size);
+        List<${className}> pageResult = inst${className}Mapper.selectAll();
+        PageInfo<${className}> reslut = new PageInfo(pageResult);
+        return reslut;
+    }
+}

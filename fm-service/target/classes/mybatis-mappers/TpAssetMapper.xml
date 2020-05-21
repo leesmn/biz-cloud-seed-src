@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.arcplus.fm.mapper.TpAssetMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.arcplus.fm.entity.TpAsset" id="tpAssetMap">
+    <result property="assetId" column="asset_id"/>
+    <result property="assetName" column="asset_name"/>
+    <result property="assetDescribe" column="asset_describe"/>
+    <result property="parentId" column="parent_id"/>
+    <result property="createBy" column="create_by"/>
+    <result property="createAt" column="create_at"/>
+    <result property="updateBy" column="update_by"/>
+    <result property="updateAt" column="update_at"/>
+    <result property="dataStatus" column="data_status"/>
+    </resultMap>
+
+    <sql id="getTblField">
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="assetId!=null">
+                asset_id,
+            </if>
+            <if test="assetName!=null">
+                asset_name,
+            </if>
+            <if test="assetDescribe!=null">
+                asset_describe,
+            </if>
+            <if test="parentId!=null">
+                parent_id,
+            </if>
+            <if test="createBy!=null">
+                create_by,
+            </if>
+            <if test="createAt!=null">
+                create_at,
+            </if>
+            <if test="updateBy!=null">
+                update_by,
+            </if>
+            <if test="updateAt!=null">
+                update_at,
+            </if>
+            <if test="dataStatus!=null">
+                data_status,
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="getAttrValue">
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="assetId!=null">
+                #{assetId},
+            </if>
+            <if test="assetName!=null">
+                #{assetName},
+            </if>
+            <if test="assetDescribe!=null">
+                #{assetDescribe},
+            </if>
+            <if test="parentId!=null">
+                #{parentId},
+            </if>
+            <if test="createBy!=null">
+                #{createBy},
+            </if>
+            <if test="createAt!=null">
+                #{createAt},
+            </if>
+            <if test="updateBy!=null">
+                #{updateBy},
+            </if>
+            <if test="updateAt!=null">
+                #{updateAt},
+            </if>
+            <if test="dataStatus!=null">
+                #{dataStatus},
+            </if>
+        </trim>
+    </sql>
+
+
+    <sql id="setAttrValue">
+        <set>
+            <trim  suffixOverrides=",">
+                <if test="assetId!=null">
+                    asset_id = #{assetId},
+                </if>
+                <if test="assetName!=null">
+                    asset_name = #{assetName},
+                </if>
+                <if test="assetDescribe!=null">
+                    asset_describe = #{assetDescribe},
+                </if>
+                <if test="parentId!=null">
+                    parent_id = #{parentId},
+                </if>
+                <if test="createBy!=null">
+                    create_by = #{createBy},
+                </if>
+                <if test="createAt!=null">
+                    create_at = #{createAt},
+                </if>
+                <if test="updateBy!=null">
+                    update_by = #{updateBy},
+                </if>
+                <if test="updateAt!=null">
+                    update_at = #{updateAt},
+                </if>
+                <if test="dataStatus!=null">
+                    data_status = #{dataStatus},
+                </if>
+                </trim>
+        </set>
+    </sql>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="assetId" >
+        insert into tp_asset
+          <include refid="getTblField" />
+        values
+          <include refid="getAttrValue" />
+
+    </insert>
+
+    <update id="update">
+        update tp_asset
+        <include refid="setAttrValue" />
+        where asset_id = #{assetId}
+    </update>
+
+    <update id="delete">
+        update tp_asset
+        set data_status = "D"
+        where asset_id = #{id}
+    </update>
+
+    <select id="selectAll" resultMap="tpAssetMap">
+        select * from tp_asset
+        where data_status = "N"
+        order by asset_id desc
+    </select>
+
+
+</mapper>

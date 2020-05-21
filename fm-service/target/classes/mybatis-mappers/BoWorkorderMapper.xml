@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.arcplus.fm.mapper.BoWorkorderMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.arcplus.fm.entity.BoWorkorder" id="boWorkorderMap">
+        <result property="woId" column="wo_id"/>
+        <result property="repairCode" column="repair_code"/>
+        <result property="woCode" column="wo_code"/>
+        <result property="facilityCode" column="facility_code"/>
+        <result property="facilityName" column="facility_name"/>
+        <result property="assignment" column="assignment"/>
+        <result property="assignmentName" column="assignment_name"/>
+        <result property="assignmentGroup" column="assignment_group"/>
+        <result property="assignmentGroupAdmin" column="assignment_group_admin"/>
+        <result property="assignmentAdminName" column="assignment_admin_name"/>
+        <result property="priorityLevel" column="priority_level"/>
+        <result property="dealStatus" column="deal_status"/>
+        <result property="workerRead" column="worker_read"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createAt" column="create_at"/>
+        <result property="dataStatus" column="data_status"/>
+        <result property="groupAdminDescribe" column="group_admin_describe"/>
+        <result property="preDealDescribe" column="pre_deal_describe"/>
+        <result property="sufDealDescribe" column="suf_deal_describe"/>
+        <result property="remark" column="remark"/>
+        <result property="materialCost" column="material_cost"/>
+        <result property="laborCost" column="labor_cost"/>
+        <result property="totalCost" column="total_cost"/>
+        <result property="signPicture" column="sign_picture"/>
+        <result property="failureTypeId" column="failure_type_id"/>
+        <result property="visitResult" column="visit_result"/>
+        <result property="fromBiz" column="from_biz"/>
+        <result property="formBizId" column="form_biz_id"/>
+        <result property="otherComment" column="other_comment"/>
+    </resultMap>
+
+    <sql id="getTblField">
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="woId!=null">
+                wo_id,
+            </if>
+            <if test="repairCode!=null">
+                repair_code,
+            </if>
+            <if test="woCode!=null">
+                wo_code,
+            </if>
+            <if test="facilityCode!=null">
+                facility_code,
+            </if>
+            <if test="facilityName!=null">
+                facility_name,
+            </if>
+            <if test="assignment!=null">
+                assignment,
+            </if>
+            <if test="assignmentName!=null">
+                assignment_name,
+            </if>
+            <if test="assignmentGroup!=null">
+                assignment_group,
+            </if>
+            <if test="assignmentGroupAdmin!=null">
+                assignment_group_admin,
+            </if>
+            <if test="assignmentAdminName!=null">
+                assignment_admin_name,
+            </if>
+            <if test="priorityLevel!=null">
+                priority_level,
+            </if>
+            <if test="dealStatus!=null">
+                deal_status,
+            </if>
+            <if test="workerRead!=null">
+                worker_read,
+            </if>
+            <if test="createBy!=null">
+                create_by,
+            </if>
+            <if test="createAt!=null">
+                create_at,
+            </if>
+            <if test="dataStatus!=null">
+                data_status,
+            </if>
+            <if test="groupAdminDescribe!=null">
+                group_admin_describe,
+            </if>
+            <if test="preDealDescribe!=null">
+                pre_deal_describe,
+            </if>
+            <if test="sufDealDescribe!=null">
+                suf_deal_describe,
+            </if>
+            <if test="remark!=null">
+                remark,
+            </if>
+            <if test="materialCost!=null">
+                material_cost,
+            </if>
+            <if test="laborCost!=null">
+                labor_cost,
+            </if>
+            <if test="totalCost!=null">
+                total_cost,
+            </if>
+            <if test="signPicture!=null">
+                sign_picture,
+            </if>
+            <if test="failureTypeId!=null">
+                failure_type_id,
+            </if>
+            <if test="visitResult!=null">
+                visit_result,
+            </if>
+            <if test="fromBiz!=null">
+                from_biz,
+            </if>
+            <if test="formBizId!=null">
+                form_biz_id,
+            </if>
+            <if test="otherComment!=null">
+                other_comment,
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="getAttrValue">
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="woId!=null">
+                #{woId},
+            </if>
+            <if test="repairCode!=null">
+                #{repairCode},
+            </if>
+            <if test="woCode!=null">
+                #{woCode},
+            </if>
+            <if test="facilityCode!=null">
+                #{facilityCode},
+            </if>
+            <if test="facilityName!=null">
+                #{facilityName},
+            </if>
+            <if test="assignment!=null">
+                #{assignment},
+            </if>
+            <if test="assignmentName!=null">
+                #{assignmentName},
+            </if>
+            <if test="assignmentGroup!=null">
+                #{assignmentGroup},
+            </if>
+            <if test="assignmentGroupAdmin!=null">
+                #{assignmentGroupAdmin},
+            </if>
+            <if test="assignmentAdminName!=null">
+                #{assignmentAdminName},
+            </if>
+            <if test="priorityLevel!=null">
+                #{priorityLevel},
+            </if>
+            <if test="dealStatus!=null">
+                #{dealStatus},
+            </if>
+            <if test="workerRead!=null">
+                #{workerRead},
+            </if>
+            <if test="createBy!=null">
+                #{createBy},
+            </if>
+            <if test="createAt!=null">
+                #{createAt},
+            </if>
+            <if test="dataStatus!=null">
+                #{dataStatus},
+            </if>
+            <if test="groupAdminDescribe!=null">
+                #{groupAdminDescribe},
+            </if>
+            <if test="preDealDescribe!=null">
+                #{preDealDescribe},
+            </if>
+            <if test="sufDealDescribe!=null">
+                #{sufDealDescribe},
+            </if>
+            <if test="remark!=null">
+                #{remark},
+            </if>
+            <if test="materialCost!=null">
+                #{materialCost},
+            </if>
+            <if test="laborCost!=null">
+                #{laborCost},
+            </if>
+            <if test="totalCost!=null">
+                #{totalCost},
+            </if>
+            <if test="signPicture!=null">
+                #{signPicture},
+            </if>
+            <if test="failureTypeId!=null">
+                #{failureTypeId},
+            </if>
+            <if test="visitResult!=null">
+                #{visitResult},
+            </if>
+            <if test="fromBiz!=null">
+                #{fromBiz},
+            </if>
+            <if test="formBizId!=null">
+                #{formBizId},
+            </if>
+            <if test="otherComment!=null">
+                #{otherComment},
+            </if>
+        </trim>
+    </sql>
+
+
+    <sql id="setAttrValue">
+        <set>
+            <trim  suffixOverrides=",">
+                <if test="woId!=null">
+                    wo_id = #{woId},
+                </if>
+                <if test="repairCode!=null">
+                    repair_code = #{repairCode},
+                </if>
+                <if test="woCode!=null">
+                    wo_code = #{woCode},
+                </if>
+                <if test="facilityCode!=null">
+                    facility_code = #{facilityCode},
+                </if>
+                <if test="facilityName!=null">
+                    facility_name = #{facilityName},
+                </if>
+                <if test="assignment!=null">
+                    assignment = #{assignment},
+                </if>
+                <if test="assignmentName!=null">
+                    assignment_name = #{assignmentName},
+                </if>
+                <if test="assignmentGroup!=null">
+                    assignment_group = #{assignmentGroup},
+                </if>
+                <if test="assignmentGroupAdmin!=null">
+                    assignment_group_admin = #{assignmentGroupAdmin},
+                </if>
+                <if test="assignmentAdminName!=null">
+                    assignment_admin_name = #{assignmentAdminName},
+                </if>
+                <if test="priorityLevel!=null">
+                    priority_level = #{priorityLevel},
+                </if>
+                <if test="dealStatus!=null">
+                    deal_status = #{dealStatus},
+                </if>
+                <if test="workerRead!=null">
+                    worker_read = #{workerRead},
+                </if>
+                <if test="createBy!=null">
+                    create_by = #{createBy},
+                </if>
+                <if test="createAt!=null">
+                    create_at = #{createAt},
+                </if>
+                <if test="dataStatus!=null">
+                    data_status = #{dataStatus},
+                </if>
+                <if test="groupAdminDescribe!=null">
+                    group_admin_describe = #{groupAdminDescribe},
+                </if>
+                <if test="preDealDescribe!=null">
+                    pre_deal_describe = #{preDealDescribe},
+                </if>
+                <if test="sufDealDescribe!=null">
+                    suf_deal_describe = #{sufDealDescribe},
+                </if>
+                <if test="remark!=null">
+                    remark = #{remark},
+                </if>
+                <if test="materialCost!=null">
+                    material_cost = #{materialCost},
+                </if>
+                <if test="laborCost!=null">
+                    labor_cost = #{laborCost},
+                </if>
+                <if test="totalCost!=null">
+                    total_cost = #{totalCost},
+                </if>
+                <if test="signPicture!=null">
+                    sign_picture = #{signPicture},
+                </if>
+                <if test="failureTypeId!=null">
+                    failure_type_id = #{failureTypeId},
+                </if>
+                <if test="visitResult!=null">
+                    visit_result = #{visitResult},
+                </if>
+                <if test="fromBiz!=null">
+                    from_biz = #{fromBiz},
+                </if>
+                <if test="formBizId!=null">
+                    form_biz_id = #{formBizId},
+                </if>
+                <if test="otherComment!=null">
+                    other_comment = #{otherComment},
+                </if>
+            </trim>
+        </set>
+    </sql>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="woId" >
+        insert into bo_workorder
+          <include refid="getTblField" />
+        values
+          <include refid="getAttrValue" />
+
+    </insert>
+
+    <update id="update">
+        update bo_workorder
+        <include refid="setAttrValue" />
+        where wo_id = #{woId}
+    </update>
+
+    <update id="updateByCode">
+        update bo_workorder
+        <include refid="setAttrValue" />
+        where wo_code = #{woCode}
+    </update>
+
+    <update id="delete">
+        update bo_workorder
+        set data_status = "D"
+        where wo_id = #{id}
+    </update>
+
+    <select id="getWorkorderByCode" resultMap="boWorkorderMap">
+        select * from bo_workorder where wo_code = #{woCode}
+    </select>
+
+    <select id="selectAll" resultMap="boWorkorderMap">
+        select * from bo_workorder where data_status = "N"
+    </select>
+
+
+    <select id="selectWorkorderComplex" resultMap="boWorkorderMap" parameterType="java.util.HashMap">
+        select wo.* from bo_workorder wo
+        <trim  suffixOverrides="and">
+            where wo.data_status = 'N'
+            <if test="adminRole == 1">
+                AND assignment_group_admin = #{uid}
+                <choose>
+                    <!--待分配,待接单-->
+                    <when test="dealState == 0">
+                        AND (deal_status = 'CR')
+                    </when>
+                    <!--已分配,已接单,处理中-->
+                    <when test="dealState == 5">
+                        AND (deal_status = 'AM' or deal_status = 'MR' or deal_status = 'MA' or deal_status = 'MB' or deal_status = 'MD'  or deal_status = 'AR')
+                    </when>
+                    <!--待审核-->
+                    <when test="dealState == 20">
+                        AND deal_status = 'MO'
+                    </when>
+                    <!--已完成，已结束，班组拒绝-->
+                    <when test="dealState == 30">
+                        AND (deal_status = 'AC' or deal_status = 'AD' or deal_status = 'CL')
+                    </when>
+                    <otherwise>
+                        AND 1=1
+                    </otherwise>
+                </choose>
+            </if>
+            <if test="adminRole == 0">
+                AND assignment = #{uid}
+                <choose>
+                    <!--待接单,已读未读-->
+                    <when test="dealState == 5">
+                        AND (deal_status = 'AM' or deal_status = 'MD' or deal_status = 'MR')
+                    </when>
+                    <!--已接单,未开始，处理中-->
+                    <when test="dealState == 10">
+                        AND (deal_status = 'MA' or deal_status = 'MB' or deal_status = 'AR')
+                    </when>
+                    <!--已完成，已审核，未审核-->
+                    <when test="dealState == 20">
+                        AND (deal_status = 'MO' or deal_status = 'AC' or deal_status = 'CL')
+                    </when>
+                    <otherwise>
+                        AND deal_status != 'AD' and deal_status != 'CR'
+                    </otherwise>
+                </choose>
+            </if>
+        </trim>
+    </select>
+
+    <select id="countByFloor" resultType="com.arcplus.fm.entity.vo.FloorCountVo">
+        select r.incident_floor_id floorId,COUNT(1) total from bo_workorder wo
+        right join bo_repair r on r.repair_code = wo.repair_code
+        where wo.data_status = 'N' and wo.deal_status = 'CR' and r.incident_building_id = #{buildId}
+        group by r.incident_floor_id
+    </select>
+
+    <select id="selectByFloor" resultMap="boWorkorderMap">
+        select wo.* from bo_workorder wo
+        right join bo_repair r on r.repair_code = wo.repair_code
+        where wo.data_status = 'N' and  r.incident_building_id = #{buildId} and r.incident_floor_id = #{floorId}
+    </select>
+</mapper>

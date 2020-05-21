@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.arcplus.fm.mapper.BoWorkorderAttachmentMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.arcplus.fm.entity.BoWorkorderAttachment" id="boWorkorderAttachmentMap">
+    <result property="attachmentId" column="attachment_id"/>
+    <result property="woCode" column="wo_code"/>
+    <result property="attachmentUrl" column="attachment_url"/>
+    <result property="attachmentType" column="attachment_type"/>
+    <result property="createAt" column="create_at"/>
+    <result property="dataStatus" column="data_status"/>
+    </resultMap>
+
+    <sql id="getTblField">
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="attachmentId!=null">
+                attachment_id,
+            </if>
+            <if test="woCode!=null">
+                wo_code,
+            </if>
+            <if test="attachmentUrl!=null">
+                attachment_url,
+            </if>
+            <if test="attachmentType!=null">
+                attachment_type,
+            </if>
+            <if test="createAt!=null">
+                create_at,
+            </if>
+            <if test="dataStatus!=null">
+                data_status,
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="getAttrValue">
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="attachmentId!=null">
+                #{attachmentId},
+            </if>
+            <if test="woCode!=null">
+                #{woCode},
+            </if>
+            <if test="attachmentUrl!=null">
+                #{attachmentUrl},
+            </if>
+            <if test="attachmentType!=null">
+                #{attachmentType},
+            </if>
+            <if test="createAt!=null">
+                #{createAt},
+            </if>
+            <if test="dataStatus!=null">
+                #{dataStatus},
+            </if>
+        </trim>
+    </sql>
+
+
+    <sql id="setAttrValue">
+        <set>
+            <trim  suffixOverrides=",">
+                <if test="attachmentId!=null">
+                    attachment_id = #{attachmentId},
+                </if>
+                <if test="woCode!=null">
+                    wo_code = #{woCode},
+                </if>
+                <if test="attachmentUrl!=null">
+                    attachment_url = #{attachmentUrl},
+                </if>
+                <if test="attachmentType!=null">
+                    attachment_type = #{attachmentType},
+                </if>
+                <if test="createAt!=null">
+                    create_at = #{createAt},
+                </if>
+                <if test="dataStatus!=null">
+                    data_status = #{dataStatus},
+                </if>
+                </trim>
+        </set>
+    </sql>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="attachmentId" >
+        insert into bo_workorder_attachment
+          <include refid="getTblField" />
+        values
+          <include refid="getAttrValue" />
+
+    </insert>
+
+    <update id="update">
+        update bo_workorder_attachment
+        <include refid="setAttrValue" />
+        where attachment_id = #{attachmentId}
+    </update>
+
+    <update id="delete">
+        update bo_workorder_attachment
+        set data_status = "D"
+        where attachment_id = #{id}
+    </update>
+
+    <select id="selectAll" resultMap="boWorkorderAttachmentMap">
+        select * from bo_workorder_attachment
+    </select>
+
+    <select id="selectByWoCode" resultMap="boWorkorderAttachmentMap">
+        select * from bo_workorder_attachment
+        where data_status = "N" and wo_code = #{woCode}
+        order by attachment_id asc
+    </select>
+
+
+</mapper>

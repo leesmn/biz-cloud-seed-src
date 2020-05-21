@@ -1,0 +1,24 @@
+package ${package}.mapper;
+
+import java.util.List;
+import ${package}.entity.${className};
+import org.apache.ibatis.annotations.Mapper;
+
+
+/**
+ * ${comments}
+ * 
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@Mapper
+public interface ${className}Mapper  {
+    int save(${className} entity);
+
+    int update(${className} entity);
+
+    int delete(int id);
+
+    List<${className}> selectAll();
+}

@@ -1,0 +1,15 @@
+com\github\wxiaoqi\security\generator\response\TableResultResponse$TableData.class
+com\github\wxiaoqi\security\generator\response\ObjectRestResponse.class
+com\github\wxiaoqi\security\generator\GeneratorBootstrap.class
+com\github\wxiaoqi\security\generator\entity\ColumnEntity.class
+com\github\wxiaoqi\security\generator\rest\GeneratorRest.class
+com\github\wxiaoqi\security\generator\response\TableResultResponse.class
+com\github\wxiaoqi\security\generator\response\BaseResponse.class
+com\github\wxiaoqi\security\generator\entity\TableEntity.class
+com\github\wxiaoqi\security\generator\utils\GeneratorUtils.class
+com\github\wxiaoqi\security\generator\utils\DateUtils.class
+com\github\wxiaoqi\security\generator\response\ListRestResponse.class
+com\github\wxiaoqi\security\generator\mapper\GeneratorMapper.class
+com\github\wxiaoqi\security\generator\service\GeneratorService.class
+com\github\wxiaoqi\security\generator\controller\HomeController.class
+com\github\wxiaoqi\security\generator\config\WebConfig.class

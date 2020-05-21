@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.arcplus.fm.mapper.TpFailureMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.arcplus.fm.entity.TpFailure" id="tpFailureMap">
+    <result property="failureId" column="failure_id"/>
+    <result property="failureName" column="failure_name"/>
+    <result property="failureDescribe" column="failure_describe"/>
+    <result property="index" column="index"/>
+    <result property="createBy" column="create_by"/>
+    <result property="createAt" column="create_at"/>
+    <result property="updateBy" column="update_by"/>
+    <result property="updateAt" column="update_at"/>
+    <result property="dataStatus" column="data_status"/>
+    </resultMap>
+
+    <sql id="getTblField">
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="failureId!=null">
+                failure_id,
+            </if>
+            <if test="failureName!=null">
+                failure_name,
+            </if>
+            <if test="failureDescribe!=null">
+                failure_describe,
+            </if>
+            <if test="index!=null">
+                tp_failure.index,
+            </if>
+            <if test="createBy!=null">
+                create_by,
+            </if>
+            <if test="createAt!=null">
+                create_at,
+            </if>
+            <if test="updateBy!=null">
+                update_by,
+            </if>
+            <if test="updateAt!=null">
+                update_at,
+            </if>
+            <if test="dataStatus!=null">
+                data_status,
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="getAttrValue">
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="failureId!=null">
+                #{failureId},
+            </if>
+            <if test="failureName!=null">
+                #{failureName},
+            </if>
+            <if test="failureDescribe!=null">
+                #{failureDescribe},
+            </if>
+            <if test="index!=null">
+                #{index},
+            </if>
+            <if test="createBy!=null">
+                #{createBy},
+            </if>
+            <if test="createAt!=null">
+                #{createAt},
+            </if>
+            <if test="updateBy!=null">
+                #{updateBy},
+            </if>
+            <if test="updateAt!=null">
+                #{updateAt},
+            </if>
+            <if test="dataStatus!=null">
+                #{dataStatus},
+            </if>
+        </trim>
+    </sql>
+
+
+    <sql id="setAttrValue">
+        <set>
+            <trim  suffixOverrides=",">
+                <if test="failureId!=null">
+                    failure_id = #{failureId},
+                </if>
+                <if test="failureName!=null">
+                    failure_name = #{failureName},
+                </if>
+                <if test="failureDescribe!=null">
+                    failure_describe = #{failureDescribe},
+                </if>
+                <if test="index!=null">
+                    tp_failure.index = #{index},
+                </if>
+                <if test="createBy!=null">
+                    create_by = #{createBy},
+                </if>
+                <if test="createAt!=null">
+                    create_at = #{createAt},
+                </if>
+                <if test="updateBy!=null">
+                    update_by = #{updateBy},
+                </if>
+                <if test="updateAt!=null">
+                    update_at = #{updateAt},
+                </if>
+                <if test="dataStatus!=null">
+                    data_status = #{dataStatus},
+                </if>
+                </trim>
+        </set>
+    </sql>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="failureId" >
+        insert into tp_failure
+          <include refid="getTblField" />
+        values
+          <include refid="getAttrValue" />
+
+    </insert>
+
+    <update id="update">
+        update tp_failure
+        <include refid="setAttrValue" />
+        where failure_id = #{failureId}
+    </update>
+
+    <update id="delete">
+        update tp_failure
+        set data_status = "D"
+        where failure_id = #{id}
+    </update>
+
+    <select id="selectAll" resultMap="tpFailureMap">
+        select * from tp_failure fail
+        where data_status = "N"
+        order by fail.index desc
+    </select>
+
+
+</mapper>
