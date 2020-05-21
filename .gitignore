@@ -1,0 +1,8 @@
+/.settings/
+/.project
+/.idea/
+*.iml
+/logs/
+target/
+/stale_outputs_checked
+
