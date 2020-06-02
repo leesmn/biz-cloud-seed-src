@@ -1,0 +1,32 @@
+
+server:
+  port: 9060
+
+logging:
+  level:
+    root: debug
+
+spring:
+  application:
+    name: order-api
+  redis:
+    database: 3
+    host: 47.103.146.44
+    port: 6379
+    password: redis@911
+    timeout: 10s
+    lettuce:
+      pool:
+        min-idle: 0
+        max-idle: 8
+        max-active: 8
+        max-wait: -1ms
+
+security:
+  oauth2:
+    client:
+      client-id: orderService
+      client-secret: 123456
+    resource:
+      token-info-uri: http://localhost:9090/oauth/check_token
+      id: order-server
