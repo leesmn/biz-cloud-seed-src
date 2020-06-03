@@ -1,6 +1,7 @@
 package com.gov.security.controller;
 
 import com.gov.security.OauthClient.RestOauthClient;
+import java.security.Principal;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,15 @@ public class AuthController {
   public Map<String, Object> clientToken(@RequestParam Map<String, String> parameters) {
       parameters.put("grant_type","client_credentials");
       return oauth2RestTemplate.postAccessToken(parameters);
+  }
+
+  /**
+   * 取认证用户信息
+   * @return
+   */
+  @RequestMapping({ "/client/userinfo" })
+  public Principal user(Principal user) {
+    return user;
   }
 
 }

@@ -24,6 +24,12 @@ server:
 
 
 spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 47.103.146.44:8848
+  application:
+    name: auth-gateway
   datasource:
     url: jdbc:mysql://47.103.146.44:3306/gov_oauth?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
     username: admin

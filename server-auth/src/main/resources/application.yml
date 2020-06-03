@@ -1,14 +1,29 @@
-
-server:
-  port: 9090
 spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 47.103.146.44:8848
   application:
     name: auth-server
   datasource:
-    url: jdbc:mysql://47.103.146.44:3306/gov_oauth?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://47.103.146.44:3306/gov_oauth?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
     username: admin
     password: admin@911
     driver-class-name: com.mysql.jdbc.Driver
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
   redis:
     database: 3
     host: 47.103.146.44
@@ -43,10 +58,7 @@ logging:
   level:
     root: debug
 
+server:
+  port: 9090
 
-#security:
-#  oauth2:
-#    resource:
-#      user-info-uri: http://10.252.29.152:9090/client/userinfo
-#      prefer-token-info: false
 

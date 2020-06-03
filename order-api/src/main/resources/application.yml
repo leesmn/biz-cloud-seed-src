@@ -9,6 +9,10 @@ logging:
 spring:
   application:
     name: order-api
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 47.103.146.44:8848
   redis:
     database: 3
     host: 47.103.146.44
@@ -21,12 +25,17 @@ spring:
         max-idle: 8
         max-active: 8
         max-wait: -1ms
-
+#  main:
+#    allow-bean-definition-overriding: true
 security:
   oauth2:
-    client:
-      client-id: orderService
-      client-secret: 123456
     resource:
       token-info-uri: http://localhost:9090/oauth/check_token
       id: order-server
+    fm:
+      client:
+        client-id: orderService
+        client-secret: 123456
+        grant-type: client_credentials
+        scope: read
+        access-token-uri: http://localhost:9090/oauth/token

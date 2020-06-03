@@ -50,7 +50,7 @@ public class OrderController {
      * 取认证用户信息
      * @return
      */
-    @RequestMapping({ "/client/userinfo" })
+    @RequestMapping({ "/users/current" })
     public Principal user(Principal user) {
         if (!redisTemplate.hasKey(user.getName())) {
             Map<String,Object> map = new HashMap<>();
